@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체조작</title>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <script src="./js/lib/jquery-1.12.4.min.js"></script>
+    <script src="./js/lib/script.js" defer></script>
+    <style>
+        body {background:rgb(253, 239, 242)}
+        #wrap {width:1000px; margin:0px auto; padding:20px;}
+        .box {background-color: #e5fcfd; padding:20px;}
+        .box + .box {margin-top:10px;}
+        div + h3 {margin-top:30px;}
+        h2 {text-align: center;}
+        h3 {margin-bottom:10px;}
+        p{padding:0; margin:0;}
+        input, textarea, select {display:block; margin:10px 0;}
+        .content {border:2px solid #cdbff5; padding:10px 12px;}
+        .content button {font-size:20px; background:pink; padding:5px 30px;}
+        .content3 > div {border:1px solid #ddd; padding:10px;}
+        .content3 > div + div {margin-top:8px;}
+        .content3 > div.add {border-color:red; transition:0.5s;}
+        .content4 {text-align: center;}
+        .content4 #imgs {width:400px; height:auto; margin:0 auto;}
+        .content4 #imgs .imgToggle {display:none;}
+
+        .content6 p {width:300px; height:200px; border:5px solid purple; background:#333; padding:20px; margin:10px auto;}
+        .content6 p img {width:100%; height:100%;}
+        .content6 div {text-align:center;}
+
+        .content.content7 {width:300px; height:200px; background:#333; position:relative; margin:50px auto; padding:0; border:none;}
+        .content7 .cnt{width:50px; height:50px; line-height:50px; text-align: center; position:absolute; padding:0; top:0; left:100px; background:#cdbff5;}
+
+        .content8 {height:3000px; padding-top:1000px;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box box1">
+            <h2>속성 조작 메서드</h2>
+            <h3>1. html/text</h3>
+            <div class="content1 content">
+                <div id="content1-1">안에 들어있는 텍스트</div>
+                <div id="content1-2">안에 들어있는 텍스트</div>
+                <div id="content1-3">안에 들어있는 텍스트</div>
+                <div id="content1-4">안에 들어있는 텍스트</div>
+            </div>
+            <h3>2. attr</h3>
+            <div class="content2 content">
+                <img src="./img/img1.gif" alt="이미지">
+                <img src="./img/img1.gif" alt="이미지" id="changThis">
+                <img src="./img/img1.gif" alt="이미지">
+                <img src="./img/img1.gif" alt="이미지">
+            </div>
+            <h3>3. addClass & removeClass</h3>
+            <div class="content3 content">
+                <div class="content3-1">addClass & removeClass</div>
+                <div class="content3-2">addClass & removeClass</div>
+                <div class="content3-3">addClass & removeClass</div>
+                <div class="content3-4">addClass & removeClass</div>
+            </div>
+            <h3>4. toggleClass</h3>
+            <div class="content4 content">
+                <p id="imgs">
+                    <img src="./img/img.jpg" alt="" class="imgToggle">
+                </p>
+                <button class="click">click</button>
+            </div>
+            <h3>5. val</h3>
+            <div class="content5 content">
+                <form action="#" method="post"><!-- post:중요(보안)/get:덜중요(전부 노출)-->
+                    <input type="text" size="40" value="텍스트 필드" id="input1">
+                    <textarea name="textarea1" id="textarea1" cols="30" rows="10"></textarea>
+                    <select id="select1">
+                        <option value="city1">Seoul</option>
+                        <option value="city2">London</option>
+                        <option value="city3">Tokyo</option>
+                        <option value="city4">New York</option>
+                    </select>
+                    <select id="select2" multiple=""><!-- 속성과 값이 같을 경우 값 생략 가능 -->
+                        <option value="town1">Galmae</option>
+                        <option value="town2">Sangbong</option>
+                        <option value="town3">Dongdaemoon</option>
+                        <option value="town4">Dongmyo</option>
+                    </select>
+                </form> 
+            </div>
+        </div>
+        <div class="box box2">
+            <h2>수치 조작 메서드</h2>
+            <h3>height/width/innerHeihgt/outerHeight</h3>
+            <div class="content content6">
+                <p id="p1"><img src="./img/img1.jpg" alt=""></p>
+                <p id="p2"><img src="./img/img.png" alt=""></p>
+
+                <div class="width">width : <span></span> px</div>
+                <div class="width1">innerWidth : <span></span> px</div>
+                <div class="width2">outerWidth : <span></span> px</div>
+            </div>
+
+            <h2>위치 조작 메서드</h2>
+            <h3>position</h3>
+            <div class="content content7">
+                <p class="cnt">box</p>
+            </div>
+            <p class="text_1">절대top 위치값: <span></span></p>
+            <p class="text_2">상대top 위치값: <span></span></p>
+
+            <h3>scrollTop</h3>
+            <div class="content content8">
+                <h1 class="top">위치 메서드</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+       //1. html/text
+$('#content1-1').hover(function(){
+    $('#content1-1').text('text메소드로 내용 바꾸기').css('color','red');
+},function(){
+    $('#content1-1').text('바꼈니?').css('color','gray');
+});
+
+$('#content1-2').hover(function(){
+    $('#content1-2').html('html메소드로 내용 바꾸기').css('color','blue');
+},function(){
+    $('#content1-2').html('바꼈니?');
+});
+
+$('#content1-3').text('<strong>strong tag</strong>'); // 글자만 조작
+$('#content1-4').html('<strong>strong tag</strong>'); // tag를 조작
+
+
+//2. attr
+//$('#changThis').attr('src','./img/img2.gif');
+//$('#changThis').attr({src:'./img/img2.gif', alt:'확인'});
+
+$('.content2 img').hover(function(){
+    $('#changThis').attr({src:'./img/img2.gif', alt:'바뀐 이미지'});
+}, function(){
+    $('#changThis').attr({src:'./img/img1.gif', alt:'원본 이미지'});
+});
+
+
+//3. addClass & removeClass
+$('.content3 > div').hover(function(){
+    $(this).addClass('add');
+}, function(){
+    $(this).removeClass('add');
+});
+
+
+//4. toggleClass
+$('.click').click(function(){
+    $('#imgs img').toggleClass();
+});
+
+
+//5. val
+$('#input1').val('입력하시오');
+$('#textarea1').val('바뀌나');
+$('#select1').val('city2');
+$('#select2').val(['town2','town3']);
+
+
+//6. 수치조작 메서드
+//width
+const wid1 = $('#p1').width();
+const wid2 = $('#p1').innerWidth();
+const wid3 = $('#p1').outerWidth();
+$('.width span').text(wid1);
+$('.width1 span').text(wid2);
+$('.width2 span').text(wid3);
+
+$('#p2').outerWidth(250).outerHeight(350);
+
+
+// 7. 위치조작 메서드
+let $text_1 = $('.text_1 span');
+let $text_2 = $('.text_2 span');
+let cntbox = $('.cnt');
+
+let off_t = cntbox.position().top;
+let pos_t = cntbox.position().left;
+
+$text_1.text(off_t);
+$text_2.text(pos_t);
+
+
+// 8. scrollTop
+let topNum = $('.top').offset().top;
+console.log(topNum);
+
+$(window).scrollTop(topNum);
+    </script>
+</body>
+</html>

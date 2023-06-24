@@ -1,0 +1,26 @@
+body {background:rgb(253, 239, 242)}
+        #wrap {width:1000px; margin:0px auto; padding:20px;}
+        .box {background-color: #e5fcfd; padding:20px;}
+        .box + .box {margin-top:10px;}
+        div + h3 {margin-top:30px;}
+        h2 {text-align: center;}
+        h3 {margin-bottom:10px;}
+        p{padding:0; margin:0;}
+        input, textarea, select {display:block; margin:10px 0;}
+        .content {border:2px solid #cdbff5; padding:10px 12px;}
+        .content button {font-size:20px; background:pink; padding:5px 30px;}
+        .content3 > div {border:1px solid #ddd; padding:10px;}
+        .content3 > div + div {margin-top:8px;}
+        .content3 > div.add {border-color:red; transition:0.5s;}
+        .content4 {text-align: center;}
+        .content4 #imgs {width:400px; height:auto; margin:0 auto;}
+        .content4 #imgs .imgToggle {display:none;}
+
+        .content6 p {width:300px; height:200px; border:5px solid purple; background:#333; padding:20px; margin:10px auto;}
+        .content6 p img {width:100%; height:100%;}
+        .content6 div {text-align:center;}
+
+        .content.content7 {width:300px; height:200px; background:#333; position:relative; margin:50px auto; padding:0; border:none;}
+        .content7 .cnt{width:50px; height:50px; line-height:50px; text-align: center; position:absolute; padding:0; top:0; left:100px; background:#cdbff5;}
+
+        .content8 {height:3000px; padding-top:1000px;}

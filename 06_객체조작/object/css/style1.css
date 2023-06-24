@@ -1,0 +1,51 @@
+body {background:rgb(253, 239, 242); margin-bottom:300px;}
+#wrap {width:1000px; margin:0px auto; padding:20px;}
+.box {background-color: #e5fcfd; padding:20px;}
+.box + .box {margin-top:10px;}
+div + h3 {margin-top:30px;}
+h2 {text-align: center;}
+h3 {margin-bottom:10px;}
+p{padding:0; margin:0;}
+input, textarea, select {display:block; margin:10px 0;}
+.content {border:2px solid #cdbff5; padding:10px 12px;}
+.content button {font-size:20px; background:pink; padding:5px 30px;}
+.content + .content {margin-top:50px;}
+
+.after {width:500px; height:250px;}
+.after p {margin-bottom:10px; border-bottom:1px solid #ddd;}
+
+.append {width:500px; margin-top:20px;}
+#banana {background:yellow; padding:10px;}
+#apple {background:rgb(245, 8, 8); padding:10px; color:#fff;}
+#pinapple {background:rgb(56, 231, 12); padding:10px;}
+#cherry {background:rgb(189, 12, 121); padding:10px; color:#fff;}
+
+.content3 > div {border:3px solid yellowgreen; margin-bottom:8px;}
+.content3 #div1 {display:none;}
+
+.content4 {height:400px;}
+.content4 #btn {display:block;}
+.content4 img {display:none;}
+
+.content5 > div {font-size:3.5em}
+.container {height:120px;}
+.container + .container {margin-top:10px;}
+#fade1 {background:yellow; display:none;}
+#fade2 {background:rgb(96, 219, 219)}
+#fade3 {background:rgb(30, 221, 141)}
+
+.content6 > div {font-size:3.5em}
+#slide1 {background:rgb(144, 78, 170); display:none;}
+#slide2 {background:rgb(63, 163, 163)}
+#slide3 {background:orange}
+
+.content7 {position:relative; height:500px;}
+.content7 .box1 {padding:20px; position:absolute; top:40px; left:0; background:orange;}
+
+.content8 {position:relative; height:500px;}
+.content8 .box2 {width:50px; height:50px; border-radius: 50px; position:absolute; top:40px; left:0; background:pink;}
+.content8 .box3 {width:50px; height:50px; border-radius: 50px; position:absolute; bottom:0px; right:0; background:aqua;}
+
+.active {background:red;}
+
+.box11 {width:200px;height:100px;background:peru;font-size:30px;}

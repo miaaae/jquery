@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 편집 메서드 2</title>
+    <link rel="stylesheet" href="./css/style1.css">
+    <script src="./js/lib/jquery-1.12.4.min.js"></script>
+    <script src="./js/lib/script1.js" defer></script>
+    <style>
+        body {background:rgb(253, 239, 242); margin-bottom:300px;}
+        #wrap {width:1000px; margin:0px auto; padding:20px;}
+        .box {background-color: #e5fcfd; padding:20px;}
+        .box + .box {margin-top:10px;}
+        div + h3 {margin-top:30px;}
+        h2 {text-align: center;}
+        h3 {margin-bottom:10px;}
+        p{padding:0; margin:0;}
+        input, textarea, select {display:block; margin:10px 0;}
+        .content {border:2px solid #cdbff5; padding:10px 12px;}
+        .content button {font-size:20px; background:pink; padding:5px 30px;}
+        .content + .content {margin-top:50px;}
+
+        .after {width:500px; height:250px;}
+        .after p {margin-bottom:10px; border-bottom:1px solid #ddd;}
+
+        .append {width:500px; margin-top:20px;}
+        #banana {background:yellow; padding:10px;}
+        #apple {background:rgb(245, 8, 8); padding:10px; color:#fff;}
+        #pinapple {background:rgb(56, 231, 12); padding:10px;}
+        #cherry {background:rgb(189, 12, 121); padding:10px; color:#fff;}
+
+        .content3 > div {border:3px solid yellowgreen; margin-bottom:8px;}
+        .content3 #div1 {display:none;}
+
+        .content4 {height:400px;}
+        .content4 #btn {display:block;}
+        .content4 img {display:none;}
+
+        .content5 > div {font-size:3.5em}
+        .container {height:120px;}
+        .container + .container {margin-top:10px;}
+        #fade1 {background:yellow; display:none;}
+        #fade2 {background:rgb(96, 219, 219)}
+        #fade3 {background:rgb(30, 221, 141)}
+
+        .content6 > div {font-size:3.5em}
+        #slide1 {background:rgb(144, 78, 170); display:none;}
+        #slide2 {background:rgb(63, 163, 163)}
+        #slide3 {background:orange}
+
+        .content7 {position:relative; height:500px;}
+        .content7 .box1 {padding:20px; position:absolute; top:40px; left:0; background:orange;}
+
+        .content8 {position:relative; height:500px;}
+        .content8 .box2 {width:50px; height:50px; border-radius: 50px; position:absolute; top:40px; left:0; background:pink;}
+        .content8 .box3 {width:50px; height:50px; border-radius: 50px; position:absolute; bottom:0px; right:0; background:aqua;}
+
+        .active {background:red;}
+
+        .box11 {width:200px;height:100px;background:peru;font-size:30px;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="box box1">
+            <h2>객체 편집 메서드</h2>
+            <div class="content content1">
+                <h3>before/after/insertBefore/insertAfter</h3>
+                <div class="after">
+                    <p>나는 내용이다1</p>
+                    <p>나는 내용이다2</p>
+                    <p>나는 내용이다3</p>
+                </div>
+            </div>
+            <div class="content content2">
+                <h3>append/appendTo/prepend/prependTo</h3>
+                <div class="append">
+                    <div id="banana">banana</div>
+                    <div id="apple">apple</div>
+                    <div id="pinapple">pinapple</div>
+                    <div id="cherry">cherry</div>
+                </div>
+            </div>
+            <div class="content content3">
+                <h3>show/hide</h3>
+                <div id="div1">HIDE BOX</div>
+                <div id="div2">SHOW BOX</div>
+            </div>
+            <div class="content content4">
+                <h3>toggle</h3>
+                <button id="btn" class="btn">Toggle</button>
+                <img src="./img/img1.jpg" alt="image">
+            </div>
+            <div class="content content5">
+                <h3>fadeIn/fadeOut/fadeTo</h3>
+                <div class="container">
+                    <div id="fade1">fadeIn example</div>
+                </div>
+                <div class="container">
+                    <div id="fade2">fadeOut example</div>
+                </div>
+                <div class="container">
+                    <div id="fade3">fadeTo example</div>
+                </div>
+            </div>
+            <div class="content content6">
+                <h3>slideDown/slideUp</h3>
+                <div class="container">
+                    <div id="slide1">slideDown example</div>
+                </div>
+                <div class="container">
+                    <div id="slide2">slideUp example</div>
+                </div>
+                <div class="container">
+                    <div id="slide3">마우스 hover했을 때 up/down</div>
+                </div>
+            </div>
+            <div class="content content7">
+                <h3>animate1</h3>
+                <div class="box1">I am a box.</div>
+            </div>
+            <div class="content content8">
+                <h3>animate2</h3>
+                <div class="box2">ball</div>
+                <div class="box3">ball</div>
+            </div>
+        </div>
+        <div class="box">
+            <h2>이벤트</h2>
+            <div class="content content9">
+                <h3>그룹등록매서드 방법1</h3>
+                <button class="btn1">on button</button>
+
+                <h3>그룹등록매서드 방법2</h3>
+                <button class="btn2">on button</button>
+
+                <h3>그룹등록매서드 방법3</h3>
+                <button class="btn3">on button</button>
+            </div>
+
+            <div class="content content10">
+                <h3>trigger(강제)</h3>
+                <p><button class="btn4">버튼1</button></p>
+                <p>동룡이</p>
+                <p><button class="btn5">버튼2</button></p>
+                <p>청명이</p>
+            </div>
+
+            <div class="content content11">
+                <h3>preventDefault() 기본이벤트 차단</h3>
+                <p><a href="https://www.naver.com" class="btn6">버튼1</a></p>
+                <p class="txt1">동룡이</p>
+                <p><a href="https://www.goggle.com" class="btn7">버튼2</a></p>
+                <p class="txt2">청명이</p>
+                <p><button class="btn8">버튼3</button></p>
+                <p class="txt3">일소</p>
+                <p><a href="javascript:void(0)" class="btn9">버튼4</a></p>
+            </div>
+            
+            <div class="content content12">
+                <h3>여러개의 클릭이벤트</h3>
+                <div class="click" style="background:pink;padding:10px;margin-bottom:3px;">click!!!</div>
+                <div class="click" style="background:pink;padding:10px;margin-bottom:3px;">click!!!</div>
+                <div class="click" style="background:pink;padding:10px;margin-bottom:3px;">click!!!</div>
+                <div class="click" style="background:pink;padding:10px;margin-bottom:3px;">click!!!</div>
+                <div class="click" style="background:pink;padding:10px;margin-bottom:3px;">click!!!</div>
+            
+                <h3>hover</h3>
+                <div class="hover" style="background:orange;padding:10px;margin-bottom:3px;">hover!!!</div> 
+                
+                <h3>mouseenter/mouseleave</h3>
+                <div class="mouseenter" style="background:olive;padding:10px;margin-bottom:3px;">mouseenter</div> 
+                <div class="mouseleave" style="background:rgb(44, 44, 8);color:#fff;padding:10px;margin-bottom:3px;">mouseleave</div> 
+
+                <h3>mouseover/mouseout</h3>
+                <div class="mouseover" style="background:olive;padding:10px;margin-bottom:3px;">mouseover</div> 
+                <div class="mouseout" style="background:rgb(44, 44, 8);color:#fff;padding:10px;margin-bottom:3px;">mouseout</div> 
+
+                <h3>focus/blur</h3>
+                <input type="text" id="input1">
+            </div>            
+        </div>
+
+        <div class="box">
+            <div class="content content13">
+                <h3>each</h3>
+                <div class="animal">cat</div>
+                <div class="animal">doggy</div>
+                <div class="animal">lion</div>
+                <div class="animal">tiger</div>
+
+                <h3>값 취득하기</h3>
+                <div class="box11">값취득</div>
+                <span class="span1"></span><br>
+                <span class="span2"></span><br>
+                <span class="span3"></span><br>
+                <span class="span4"></span><br>
+            </div>
+        </div>
+    </div>
+    <script>
+        //before/after/insertBefore/insertAfter
+        $('.after p:eq(1)').after('<p>after로 내용 추가</p>').css('background','aqua'); // 본래 eq에 배경
+        $('<p>insertAfter로 내용 추가</p>').insertAfter('.after p:eq(1)').css('background','yellow'); //추가된 eq에 배경
+
+        $('.after p:eq(0)').before('<p>before로 내용 추가</p>').css('background','skyblue');
+        $('<p>insertBefore로 내용 추가</p>').insertBefore('.after p:eq(0)').css('background','pink');
+
+
+
+        //append/appendTo/prepend/prependTo
+        const banana = $('#banana');
+        const apple = $('#apple');
+        const pinapple = $('#pinapple');
+        const cherry = $('#cherry');
+
+        banana.append(apple); // banana 하위 속성으로 apple
+        pinapple.prepend(cherry); // banana 하위 속성으로 apple
+
+
+
+        //show/hide
+        //$('#div1').show();
+        $('.content3').hover(function(){
+            $('#div1').show();
+            $('#div2').hide();
+        }, function(){
+            $('#div1').hide();
+            $('#div2').show();
+        })
+
+
+        //toggle, toggleClass
+        $('#btn').on('click', function(){
+            $('img').toggle();
+        });
+
+
+
+        //fadeIn/fadeOut/fadeTo
+        $('.container').mouseover(function(){
+            $('#fade1').fadeIn(2000);
+        });
+
+        $('#fade2').fadeOut(2000);
+        $('#fade3').fadeTo(2000, 0.3);
+
+
+
+        //slideDown/slideUp
+        $('#slide1').slideDown(200);
+        $('#slide2').slideUp(200);
+
+        $('.content6 .container').hover(function(){
+            $('#slide3').slideUp(600);
+        }, function(){
+            $('#slide3').slideDown(200);
+        });
+
+
+
+        //animate1
+        $('.box1').animate({left:800, top:400}, 500); // 대각선으로 이동
+
+
+        $('.box2').animate({left:400},1000).animate({top:400},500);
+        $('.box3').delay(1500).animate({bottom:450},1000).animate({right:500, bottom:40},1000);
+
+
+
+
+        // 그룹등록매서드 방법1 : on 매서드
+        $('.btn1').on('click focus',
+            function(){
+                console.log('tab index');
+            }
+        );
+
+        // 그룹등록매서드 방법2
+        $('.btn2').on({'click focus':
+            function(){
+                console.log('welcome');
+            }
+        });
+
+        // 그룹등록매서드 방법3
+        $('.btn3').on({
+            click:function(){
+                console.log('click')
+            },focus:function(){
+                console.log('focus');
+            }
+        });
+
+
+
+        //trigger
+        $('.btn4').click(function(){
+            $(this).parent().next().css('color','pink');
+        });
+        $('.btn5').on({'mouseover focus':function(){
+            $(this).parent().next().css('color','blue');
+        }});
+
+        $('.btn5').trigger('mouseover'); // 이벤트 강제실행
+        $('.btn4').off(); // 이벤트 강제해제
+
+
+
+
+        //preventDefault
+        $('.btn6').click(function(e){
+            e.preventDefault(); //기본 기능 차단
+            console.log(e);
+            $('.txt1').text('나는 백천이다');
+        });
+
+        $('.btn7').click(function(e){
+            $('.txt2').text('나는 화산광견이다');
+            return false
+        });
+
+        $('.btn8').on('dblclick',function(){
+            $('.txt3').css({'background':'red'});
+        });
+
+        $('.btn9').click(function(e){
+            $(this).text('바꼈다');
+        });
+
+
+
+        //여러개의 클릭이벤트
+        // $('.click').click(function(){
+        //     $('.click').text('clicked!!!');
+        // })
+
+
+        let a = true;
+        $('.click').click(function(){
+            if(a==true){
+                $(this).text('clicked!!!'); // 내가 클릭한 요소만 변경
+                a=false;
+            }else{
+                $(this).text('restart!!!'); // 내가 클릭한 요소만 변경
+                a=true;
+            }
+        });
+
+
+
+        //hover
+        $('.hover').hover(function(){
+            $(this).text('mouse in');
+        },function(){
+            $(this).text('mouse out');
+        });
+
+
+        //mouseenter
+        $('.mouseenter').mouseenter(function(){
+            $(this).text('청명');
+        });
+        $('.mouseleave').mouseleave(function(){
+            $(this).text('진동룡');
+        });
+        $('.mouseover').mouseleave(function(){
+            $(this).text('일소');
+        });
+        $('.mouseout').mouseleave(function(){
+            $(this).text('화산');
+        });
+
+
+        $('#input1').focus(function(){
+            $(this).addClass('active'); //focus
+        });
+        $('#input1').blur(function(){
+            $(this).removeClass('active'); // focus out
+        });
+
+
+
+        //each
+        $('.animal').each(function(){
+            let animal = $(this).text();
+            console.log(animal);
+        });
+
+
+        // 값 취득하기
+        let box11 = $('.box11');
+        let boxWidth=box11.width();
+        let boxHeight=box11.height();
+        let boxFont=box11.css('font-size');
+        let boxColor=box11.css('background-color');
+
+        $('.span1').text(boxWidth+'px');
+        $('.span2').text(boxHeight+'px');
+        $('.span3').text(boxFont);
+        $('.span4').text(boxColor);
+
+    </script>
+</body>
+</html>
